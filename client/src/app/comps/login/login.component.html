@@ -1,0 +1,27 @@
+<div class="login">
+    <div class="form">
+        <form [formGroup]="form" >
+        <br>
+        <h1>Login</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Username</mat-label>
+        <input formControlName="username" matInput>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+        </mat-form-field>
+        <p *ngIf="_data.error" class="err">{{_data.error}}</p>
+        <br>
+      <button (click)="_data.loginUser(form.value)" mat-raised-button color="primary">Login</button>
+      <br><br>
+      <span>Don't have an account yet? <a routerLink="/register">Register Now</a></span>
+      <br><br>
+    
+      </form>
+    </div> 
+</div>

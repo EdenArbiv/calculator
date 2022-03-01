@@ -1,0 +1,21 @@
+.login{
+    text-align: center;
+    padding: 5% 30%;
+}
+
+form >*{
+    margin: 1%;
+    
+}
+
+form{
+    border: 1px solid;
+    border-radius: 10px;
+    height: auto;
+    box-shadow: 10px 5px 5px silver;
+
+}
+
+.err{
+    color: red;
+}

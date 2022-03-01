@@ -1,0 +1,7 @@
+
+<mat-toolbar class="appbar" color="primary">
+    <mat-toolbar-row>
+      <span>My App</span>
+      <button (click)="_data.logoutUser()"  *ngIf="_data.local" class="home" mat-mini-fab aria-label="Example icon button with a home icon"><mat-icon class="btn">logout</mat-icon></button>
+    </mat-toolbar-row>
+  </mat-toolbar>

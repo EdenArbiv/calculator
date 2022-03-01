@@ -1,0 +1,51 @@
+<div class="actions">
+    <h1>Hello {{_data.name}}!</h1>
+    <h3>your current account is:</h3>
+    <h2>{{_data.currentaccount}}₪</h2>
+    <br>
+    <button (click)="action()" mat-raised-button color="primary">Add income/expense</button>
+    <br><br>
+    <div *ngIf="bool">
+        <form [formGroup]="form">
+            <mat-form-field appearance="fill">
+                <mat-label>Select</mat-label>
+                 <mat-select formControlName="type">
+                 <mat-option value="true">Income</mat-option>
+                 <mat-option value="false">Expense</mat-option>
+                </mat-select>
+              </mat-form-field>
+           
+              <br>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input formControlName="name" matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>amount</mat-label>
+                <input type="number" formControlName="price" matInput>
+            </mat-form-field>
+            <br>
+            <button (click)="_data.addAction(form.value)" mat-raised-button>Add</button>
+        </form>
+    </div>
+
+  
+    <br><br>
+    <h3>The actions of this month:</h3>
+    <h5>Pay attention, on the 10th of the month all actions will be deleted!</h5>
+    <br>
+    <mat-card class="action" >
+        <mat-card-title>Description</mat-card-title>
+        <mat-card-title></mat-card-title>
+        <mat-card-title>Price</mat-card-title>
+    </mat-card>
+    <mat-card class="action color" *ngFor="let action of _data.actionsArr" [ngStyle]="{'border-color': action.type ? 'green' : 'red' }">
+        <mat-card-subtitle>{{action.name}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="action.type" ><b>+</b></mat-card-subtitle>
+        <mat-card-subtitle *ngIf="!action.type" ><b>-</b></mat-card-subtitle>
+        <mat-card-subtitle>{{action.price}}₪</mat-card-subtitle>
+        <mat-icon (click)="_data.delAction(action._id)">cancel</mat-icon>
+    </mat-card>
+    <br><br>
+    
+</div>
